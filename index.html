@@ -21,6 +21,7 @@
       
     <!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   </head>
   <body>
       
@@ -70,8 +71,7 @@
                             <div class="item entry item-h2 type1 print">
                                 <img src="images/work_01.png">
                                 <div class="hovereffect">
-                                        <h4>Medicament</h4>
-                                        <h5>Medicament information</h5>
+                                    <!-- space to populate with json data -->
                                 </div><!-- end hovereffect -->
                             </div>                
                             
@@ -81,6 +81,10 @@
                 </div>
             </div>
         </div>
+        <section id="test" class="test_section">
+        <!-- space to populate with json data -->
+            test
+        </section>
         <footer>
 			<div id="footer">
 				<div class="container">
@@ -134,9 +138,50 @@
 	<script src="js/jquery.countTo.js"></script>
 	<!-- Flexslider -->
 	<script src="js/jquery.flexslider-min.js"></script>
-
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+    <!-- JSON script -->
+    <script>
+        const med_item = document.querySelector('#test.test_section');
+        
+        const testText = document.createElement('h1');
+        testText.textContent = 'It works!!';
+        med_item.appendChild(testText);
+        
+        let requestURL = 'https://github.com/DiegoN95/MedBox/blob/master/Data/100001.json';
+        let request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+
+        request.onload = function() {
+        const traitement = request.response;
+        showTraitement(traitement);
+        }
+        
+        function showTraitement(jsonObj) {
+            const rX = jsonObj['Traitement'];
+            
+            const myArticle = document.createElement('article');
+            const myH2 = document.createElement('h2');
+            const myPara1 = document.createElement('p');
+            const myPara2 = document.createElement('p');
+            const myPara3 = document.createElement('p');
+            
+            myH2.textContent = 'Med name: ' + rX[0]["Nom du médicament"];
+            myPara1.textContent = 'Take period: ' + rX[0]["Période de prise"];
+            myPara2.textContent = 'Ocurrence per day: ' + rX[0]["Nonbre de prise par Jour"];
+            myPara3.textContent = 'Quantity:' + rX[0]["Quantité par prise"];
+            
+            myArticle.appendChild(myH2);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myPara3);
+            
+            med_item.appendChild(myArticle);
+            
+        }
+    </script>
     
   </body>
 </html>
