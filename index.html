@@ -70,7 +70,7 @@
                             
                             <div class="item entry item-h2 type1 print">
                                 <img src="images/work_01.png">
-                                <div class="hovereffect">
+                                <div id="detail" class="hovereffect">
                                     <!-- space to populate with json data -->
                                 </div><!-- end hovereffect -->
                             </div>                
@@ -142,13 +142,9 @@
 	<script src="js/main.js"></script>
     <!-- JSON script -->
     <script>
-        const med_item = document.querySelector('#test.test_section');
+        const med_item = document.querySelector('#detail.hovereffect');
         
-        const testText = document.createElement('h1');
-        testText.textContent = 'It works!!';
-        med_item.appendChild(testText);
-        
-        let requestURL = 'https://github.com/DiegoN95/MedBox/blob/master/Data/100001.json';
+        let requestURL = 'https://raw.githubusercontent.com/DiegoN95/MedBox/master/Data/100001.json';
         let request = new XMLHttpRequest();
         request.open('GET', requestURL);
         request.responseType = 'json';
@@ -164,18 +160,27 @@
             
             const myArticle = document.createElement('article');
             const myH2 = document.createElement('h2');
+            const mytile1 = document.createElement('p');
             const myPara1 = document.createElement('p');
+            const mytile2 = document.createElement('p');
             const myPara2 = document.createElement('p');
+            const mytile3 = document.createElement('p');
             const myPara3 = document.createElement('p');
             
             myH2.textContent = 'Med name: ' + rX[0]["Nom du médicament"];
-            myPara1.textContent = 'Take period: ' + rX[0]["Période de prise"];
-            myPara2.textContent = 'Ocurrence per day: ' + rX[0]["Nonbre de prise par Jour"];
-            myPara3.textContent = 'Quantity:' + rX[0]["Quantité par prise"];
+            mytile1.textContent = 'Take period: ';
+            myPara1.textContent = rX[0]["Période de prise"];
+            mytile2.textContent = 'Ocurrence per day: ';
+            myPara2.textContent = rX[0]["Nonbre de prise par Jour"];
+            mytile3.textContent = 'Quantity: ';
+            myPara3.textContent = rX[0]["Quantité par prise"] + " per day.";
             
             myArticle.appendChild(myH2);
+            myArticle.appendChild(mytile1);
             myArticle.appendChild(myPara1);
+            myArticle.appendChild(mytile2);
             myArticle.appendChild(myPara2);
+            myArticle.appendChild(mytile3);
             myArticle.appendChild(myPara3);
             
             med_item.appendChild(myArticle);

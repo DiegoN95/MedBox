@@ -1103,3 +1103,11 @@ li {
   margin-bottom: 1em;
   padding-bottom: 1em;
 }
+
+.hovereffect p {    
+    color: black;
+    text-align: left;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
+    margin-left: 1em;
+}
