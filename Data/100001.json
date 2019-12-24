@@ -1,13 +1,13 @@
 {
 	"Traitement":[
 		{
-			"Nom du médicament": "doliprame"
+			"Nom du médicament": "doliprame",
 			"Période de prise":"Lundi.Mercredi.Vendredi.", 
 			"Nonbre de prise par Jour":"Matin.Soir.", 
 			"Quantité par prise":"2"
 		},
 		{
-			"Nom du médicament": "paracetamol"
+			"Nom du médicament": "paracetamol",
 			"Période de prise":"Lundi.Jeudi.Samedi.", 
 			"Nonbre de prise par Jour":"Matin.", 
 			"Quantité par prise":"1"
