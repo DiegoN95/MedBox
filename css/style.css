@@ -929,19 +929,22 @@ input[type="text"] {
   margin-bottom: 30px;
 }
 
-#footer div {
+#footer {
   background-color: #373a3c;
 }
 
-#footer h4 {
+#footer h3 {
   font-size: 30px;
   font-weight: 400;
 }
 #footer ul {
-  margin: 0;
-  padding: 0;
+  
+  
+  padding: 2px 0 2px 0;
+  margin: 1px 0 1px 0;
 }
 #footer ul li {
+    
   font-size: 18px;
   list-style: none;
   margin-bottom: 0;
@@ -964,6 +967,8 @@ input[type="text"] {
 #footer p {
   color: #9f9770;
 }
+
+/* To see */
 #footer a:hover, #footer a:focus {
   text-decoration: none;
   color: #FF847C;
@@ -972,11 +977,13 @@ input[type="text"] {
 .fh5co-social-icon a {
   padding: 0 5px;
 }
+/* To see */
 .fh5co-social-icon a i {
-  color: #000;
+  color: #efdfdf;
 }
 .fh5co-social-icon a:hover, .fh5co-social-icon a:focus {
   text-decoration: none;
+  color: rgb(89, 92, 63);
 }
 
 .heading-section {
@@ -1019,7 +1026,7 @@ input[type="text"] {
 /*# sourceMappingURL=style.css.map */
 
 
-#actual .container .row .actual-content h2,.actual-title h1{
+#actual .actual-title h1{
     color: whitesmoke;
     vertical-align: end;
 }
@@ -1032,15 +1039,15 @@ input[type="text"] {
 
 
 #actual {    
-  margin-bottom: 1em;
+  padding-top: 1em;
   padding-bottom: 1em;
 }
 
-.section-title {
+#footer .section-title {
     color: #bdbfc1;
 }
 
-.btn-primary {
+#treatment_section .btn-primary {
 		display: inline-block;
 		padding: 5px 13px;
 		font-size: 16px;
@@ -1057,32 +1064,27 @@ input[type="text"] {
         border-radius: 0%;
 	}
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+#treatment_section .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
 	color: #0a0a0a !important;
 	background-color: #ffffff !important;
 	border-color: #ffe200 !important;
 	}
 
-ul {
-    list-style:none; 
-    padding-left:10px;
-    overflow: hidden;
-}
 
-li {
+#treatment_section li{
     float: left;
 }
 
-.entry:hover .hovereffect { 
+#treatment_section .entry:hover .hovereffect { 
     opacity: 1;
     visibility: visible;
 }
 
-.hovereffect {
+#treatment_section .hovereffect {
     background-color:rgba(101, 103, 59, 0.6);
     position: absolute;
     left: 0px;
-    top: 55px;
+    top: 5px;
     width: 270px;
     height: 270px;
     opacity:0;
@@ -1090,24 +1092,32 @@ li {
     transform: scale(0.9);
 }
 
-
-
-
-
-.entry {    
-    width: 270px;
-    height: 270px;
-}
-
-.upper-section {    
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-}
-
-.hovereffect p {    
+#treatment_section .hovereffect p {    
     color: black;
     text-align: left;
     margin-bottom: 0em;
     padding-bottom: 0em;
     margin-left: 1em;
+}
+
+
+#treatment_section .entry {    
+    width: 270px;
+    height: 270px;
+}
+
+#treatment_section .upper-section {    
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+
+#treatment_section .filter_bar {    
+    list-style:none; 
+    padding-left:10px;
+    overflow: hidden;
+}
+
+#treatment_section .item {    
+    position: relative;
 }

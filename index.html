@@ -44,19 +44,20 @@
 				</div>
 			</div>
 		</div>
-        <div id="actual" class="upper-section">
+        <section id="treatment_section" class="parallax" style="background-image: url('images/landscape.jpg');" data-stellar-background-ratio="0.4" data-stellar-vertical-offset="20">  
+            <div id="actual" class="upper-section">
             <div class="container">
                 <div class="row ">
-                  <div class="col-md-3 col-sm-6 align-self-center">
+                  <div class="col-md-3 col-sm-4 align-self-center">
                       <div class="actual-title">
                         <h1>Actual treatment:</h1>    
                       </div>
                   </div>
-                  <div class="col-md-7 col-sm-6">
+                  <div class="col-md-9 col-sm-8">
                     <div class="row">
                         <div class="text-center clearfix">
                             <nav class="medicament-filter">
-                                <ul>
+                                <ul class="filter_bar">
                                     <li><a class="btn btn-primary" href="#" data-filter="*">All</a></li>
                                     <li><a class="btn btn-primary" href="#" data-filter=".type1">Type1</a></li>
                                     <li><a class="btn btn-primary" href="#" data-filter=".type2">Type2</a></li>
@@ -66,41 +67,36 @@
                         </div>  
                     </div>
                     <div class="row">
-                        <div class="masonry_wrapper" data-scroll-reveal="enter from the bottom after 0.5s">
-                            
+                        <div id="pannel" class="masonry_wrapper" data-scroll-reveal="enter from the bottom after 0.5s">
+                            <!-- treatement items place -->   
                             <div class="item entry item-h2 type1 print">
                                 <img src="images/work_01.png">
                                 <div id="detail" class="hovereffect">
                                     <!-- space to populate with json data -->
                                 </div><!-- end hovereffect -->
-                            </div>                
-                            
+                            </div> 
 				        </div>  
                     </div>
                   </div>
                 </div>
             </div>
         </div>
-        <section id="test" class="test_section">
-        <!-- space to populate with json data -->
-            test
-        </section>
+        </section>    
         <footer>
 			<div id="footer">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-4">
+					<div class="row justify-content-center">
+						<div class="col-md-4 text-center">
 							<h3 class="section-title">NovaTech</h3>
 							<p>StartUp destinated to implement the MedBox &reg;  proyect in order to ease the pain of the elders.</p>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-4 text-center">
 							<h3 class="section-title">Our Services</h3>
 							<ul>
 								<li><a href="#">FAQ</a></li>
 							</ul>
 						</div>
-
-						<div class="col-md-4">
+						<div class="col-md-4 text-center">
 							<h3 class="section-title">Information</h3>
 							<ul>
 								<li><a href="#">Terms &amp; Condition</a></li>
@@ -142,13 +138,13 @@
 	<script src="js/main.js"></script>
     <!-- JSON script -->
     <script>
-        const med_item = document.querySelector('#detail.hovereffect');
-        
         let requestURL = 'https://raw.githubusercontent.com/DiegoN95/MedBox/master/Data/100001.json';
         let request = new XMLHttpRequest();
         request.open('GET', requestURL);
         request.responseType = 'json';
         request.send();
+        
+        const pan = document.querySelector('#pannel.masonry_wrapper');
 
         request.onload = function() {
         const traitement = request.response;
@@ -158,34 +154,46 @@
         function showTraitement(jsonObj) {
             const rX = jsonObj['Traitement'];
             
-            const myArticle = document.createElement('article');
-            const myH2 = document.createElement('h2');
-            const mytile1 = document.createElement('p');
-            const myPara1 = document.createElement('p');
-            const mytile2 = document.createElement('p');
-            const myPara2 = document.createElement('p');
-            const mytile3 = document.createElement('p');
-            const myPara3 = document.createElement('p');
-            
-            myH2.textContent = 'Med name: ' + rX[0]["Nom du médicament"];
-            mytile1.textContent = 'Take period: ';
-            myPara1.textContent = rX[0]["Période de prise"];
-            mytile2.textContent = 'Ocurrence per day: ';
-            myPara2.textContent = rX[0]["Nonbre de prise par Jour"];
-            mytile3.textContent = 'Quantity: ';
-            myPara3.textContent = rX[0]["Quantité par prise"] + " per day.";
-            
-            myArticle.appendChild(myH2);
-            myArticle.appendChild(mytile1);
-            myArticle.appendChild(myPara1);
-            myArticle.appendChild(mytile2);
-            myArticle.appendChild(myPara2);
-            myArticle.appendChild(mytile3);
-            myArticle.appendChild(myPara3);
-            
-            med_item.appendChild(myArticle);
-            
+            for (var j = 0; j < rX.length; j++){
+                const myimg = document.createElement('img');
+                myimg.setAttribute("src", "images/work_01.png");
+                const myhover = document.createElement('div');
+                myhover.className = 'hovereffect';   
+                const mytest = document.createElement('div');
+                mytest.className = 'item entry item-h2 type1 print';
+                
+                const myArticle = document.createElement('article');
+                const myH2 = document.createElement('h2');
+                const mytile1 = document.createElement('p');
+                const myPara1 = document.createElement('p');
+                const mytile2 = document.createElement('p');
+                const myPara2 = document.createElement('p');
+                const mytile3 = document.createElement('p');
+                const myPara3 = document.createElement('p');
+
+                myH2.textContent = 'Med name: ' + rX[j]["Nom du médicament"];
+                mytile1.textContent = 'Take period: ';
+                myPara1.textContent = rX[j]["Période de prise"];
+                mytile2.textContent = 'Ocurrence per day: ';
+                myPara2.textContent = rX[j]["Nonbre de prise par Jour"];
+                mytile3.textContent = 'Quantity: ';
+                myPara3.textContent = rX[j]["Quantité par prise"] + " per day.";
+
+                myArticle.appendChild(myH2);
+                myArticle.appendChild(mytile1);
+                myArticle.appendChild(myPara1);
+                myArticle.appendChild(mytile2);
+                myArticle.appendChild(myPara2);
+                myArticle.appendChild(mytile3);
+                myArticle.appendChild(myPara3);
+
+                myhover.appendChild(myArticle);
+                mytest.appendChild(myimg);
+                mytest.appendChild(myhover);
+                pan.appendChild(mytest);
+            }
         }
+        
     </script>
     
   </body>
