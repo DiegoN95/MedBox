@@ -44,16 +44,16 @@
 				</div>
 			</div>
 		</div>
-        <section id="treatment_section" class="parallax" style="background-image: url('images/landscape.jpg');" data-stellar-background-ratio="0.4" data-stellar-vertical-offset="20">  
+        <section id="treatment_section" class="parallax" style="background-image: url('images/landscape.jpg');">  
             <div id="actual" class="upper-section">
             <div class="container">
-                <div class="row ">
-                  <div class="col-md-3 col-sm-4 align-self-center">
+                <div class="row-md-3 row-sm-6">
+                  <div class="col-md-3 col-sm-6 justify-content-center">
                       <div class="actual-title">
                         <h1>Actual treatment:</h1>    
                       </div>
                   </div>
-                  <div class="col-md-9 col-sm-8">
+                  <div class="col-md-9 col-sm-6 ">
                     <div class="row">
                         <div class="text-center clearfix">
                             <nav class="medicament-filter">
@@ -66,13 +66,14 @@
                             </nav>
                         </div>  
                     </div>
-                    <div class="row">
+                    <div class="row-md-9 row-sm-6 justify-content-center">
                         <div id="pannel" class="masonry_wrapper" data-scroll-reveal="enter from the bottom after 0.5s">
                             <!-- treatement items place -->   
-                            <div class="item entry item-h2 type1 print">
-                                <img src="images/work_01.png">
+                            <div class="col-md-6 col-lg-4 item entry item-h2 type1 print">
+                                <img src="images/Add.png">
                                 <div id="detail" class="hovereffect">
                                     <!-- space to populate with json data -->
+                                    <h1>Add element<br>+</h1>
                                 </div><!-- end hovereffect -->
                             </div> 
 				        </div>  
@@ -156,11 +157,12 @@
             
             for (var j = 0; j < rX.length; j++){
                 const myimg = document.createElement('img');
-                myimg.setAttribute("src", "images/work_01.png");
+                
+                myimg.setAttribute("src", "images/" + rX[j]["Nom du médicament"] + ".png");
                 const myhover = document.createElement('div');
                 myhover.className = 'hovereffect';   
                 const mytest = document.createElement('div');
-                mytest.className = 'item entry item-h2 type1 print';
+                mytest.className = 'col-md-6 col-lg-4 item entry item-h2 type1 print';
                 
                 const myArticle = document.createElement('article');
                 const myH2 = document.createElement('h2');
