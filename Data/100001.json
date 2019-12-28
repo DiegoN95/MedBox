@@ -11,6 +11,18 @@
 			"Période de prise":"Lundi.Jeudi.Samedi.", 
 			"Nonbre de prise par Jour":"Matin.", 
 			"Quantité par prise":"1"
+		},
+		{
+			"Nom du médicament": "Third",
+			"Période de prise":"Lundi.", 
+			"Nonbre de prise par Jour":"Matin.", 
+			"Quantité par prise":"8"
+		},
+		{
+			"Nom du médicament": "Fourth",
+			"Période de prise":"Samedi.", 
+			"Nonbre de prise par Jour":"Matin.", 
+			"Quantité par prise":"12"
 		}
 	]
 }
