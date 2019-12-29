@@ -67,14 +67,35 @@
                         </div>  
                     </div>
                     <div class="row-md-9 row-sm-6 justify-content-center">
+                        <div id="edit_window" class="edition_interface">
+                            <div class="row ">
+                                <div class="col-md-6">  
+                                <h1>Edit treatment</h1>
+                                <form id="editInfo">
+                                    <h3>Med name:<br>
+                                        <input type="text" name="MedName" id="MedName" value="Insert medicament name"><br>Take period:<br>
+                                        <input type="text" name="TakePeriod" id="TakePeriod" value="Insert Period">
+                                        <br>Ocurrence:<br>
+                                        <input type="text" name="Ocurrence" id="Ocurrence" value="Insert ocurrence">
+                                        <br>Quantity:<br>
+                                        <input type="text" name="Quantity" id="Quantity" value="Insert Quantity"><br>
+                                    </h3>
+                                    </form>
+                            </div> 
+                            <div class="col-lg-6 ">
+                                <img id="imgMed" src="images/Add.png">
+                            </div>
+                            </div>
+                                <button class="btn save_btn"  href="#" onclick="toogle_edit()">Save</button>
+                        </div><!-- end edit_window -->
                         <div id="pannel" class="masonry_wrapper" data-scroll-reveal="enter from the bottom after 0.5s">
                             <!-- treatement items place -->   
                             <div class="col-md-6 col-lg-4 item entry item-h2 type1 print">
                                 <img src="images/Add.png">
-                                <div id="detail" class="hovereffect">
+                                <button id="detail" class="hovereffect" onclick="toogle_edit()">
                                     <!-- space to populate with json data -->
-                                    <h1>Add element<br>+</h1>
-                                </div><!-- end hovereffect -->
+                                    Add element<br>+
+                                </button><!-- end hovereffect -->
                             </div> 
 				        </div>  
                     </div>
@@ -150,19 +171,25 @@
         request.onload = function() {
         const traitement = request.response;
         showTraitement(traitement);
+        $("#edit_window.edition_interface").slideUp("slow");
         }
         
         function showTraitement(jsonObj) {
             const rX = jsonObj['Traitement'];
             
             for (var j = 0; j < rX.length; j++){
-                const myimg = document.createElement('img');
-                
+                var temp_id = j+"Med";
+                const myimg = document.createElement('img'); 
                 myimg.setAttribute("src", "images/" + rX[j]["Nom du médicament"] + ".png");
-                const myhover = document.createElement('div');
-                myhover.className = 'hovereffect';   
+                const myhover = document.createElement('button');
+                myhover.className = 'hovereffect';  
+                myhover.id = "B"+temp_id;
+                myhover.addEventListener("click", load_treatment);
                 const mytest = document.createElement('div');
                 mytest.className = 'col-md-6 col-lg-4 item entry item-h2 type1 print';
+                mytest.id = temp_id;
+                const myData = rX[j];
+                window.gtreatment = rX;
                 
                 const myArticle = document.createElement('article');
                 const myH2 = document.createElement('h2');
@@ -192,10 +219,46 @@
                 myhover.appendChild(myArticle);
                 mytest.appendChild(myimg);
                 mytest.appendChild(myhover);
+                $("#"+temp_id).data(myData);
                 pan.appendChild(mytest);
             }
         }
         
+        function toogle_edit() {
+            var x = document.querySelector("#edit_window.edition_interface");
+            if (x.style.display == "none") {
+                 $("#edit_window.edition_interface").slideToggle("slow");
+                $("#pannel.masonry_wrapper").slideToggle("slow");
+            } else {
+                $("#edit_window.edition_interface").slideToggle("slow");
+                $("#pannel.masonry_wrapper").slideToggle("slow",function(){
+                    document.getElementById("imgMed").setAttribute("src","images/Add.png");
+                    document.getElementById("MedName").setAttribute("value","Insert medicament name");
+                    document.getElementById("TakePeriod").setAttribute("value","Insert Period");
+                    document.getElementById("Ocurrence").setAttribute("value","Insert ocurrence");
+                    document.getElementById("Quantity").setAttribute("value","Insert Quantity");
+                  });
+            }
+        }
+        
+        
+        function load_treatment() {
+            var sCaller = this.parentElement;
+            var ntret = parseInt(sCaller.id);
+            const MyForm = document.getElementById("editInfo");
+            const Myname = document.getElementById("MedName");
+            const Myper = document.getElementById("TakePeriod");
+            const Myocu = document.getElementById("Ocurrence");
+            const Myqty = document.getElementById("Quantity");
+            const MyIMed = document.getElementById("imgMed");
+            MyForm.reset();
+            Myname.setAttribute("value", gtreatment[ntret]["Nom du médicament"]);
+            Myper.setAttribute("value", gtreatment[ntret]["Période de prise"]);
+            Myocu.setAttribute("value", gtreatment[ntret]["Nonbre de prise par Jour"]);
+            Myqty.setAttribute("value", gtreatment[ntret]["Quantité par prise"]);
+            MyIMed.setAttribute("src", "images/" + gtreatment[ntret]["Nom du médicament"] + ".png");
+            toogle_edit();
+        }
     </script>
     
   </body>

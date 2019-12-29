@@ -922,7 +922,8 @@ header .fh5co-navbar-brand .fh5co-logo:active, header .fh5co-navbar-brand .fh5co
 }
 
 input[type="text"] {
-  height: 50px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 .form-group {
@@ -1046,6 +1047,30 @@ input[type="text"] {
     color: #bdbfc1;
 }
 
+#treatment_section .save_btn {
+		display: inline-block;
+		padding: 5px 13px;
+		font-size: 16px;
+		font-weight: 700;
+		text-align: center;
+		vertical-align: middle;
+		cursor: pointer;
+		white-space: nowrap;
+		background: 0 0;
+		color: #000000!important;
+		border: 2px solid #000000;
+		margin-top: 5px;
+		text-transform: uppercase;
+        border-radius: 0%;
+	}
+
+#treatment_section .save_btn:hover, .save_btn:focus, .save_btn:active, .open > .dropdown-toggle.save_btn{
+	   color: #0a0a0a !important;
+	   background-color: #ffffff !important;
+		border: 5px solid #64611b;
+		font-size: 12px;
+	}
+
 #treatment_section .btn-primary {
 		display: inline-block;
 		padding: 5px 13px;
@@ -1069,7 +1094,6 @@ input[type="text"] {
 	border-color: #ffe200 !important;
 	}
 
-
 #treatment_section li{
     float: left;
 }
@@ -1092,6 +1116,15 @@ input[type="text"] {
     transition:all .3s ease-in-out;
     transform: scale(0.4);
     display: table;
+	border: 2px solid rgb(0, 0, 0);
+    font-family: "Playfair Display", Arial, serif;
+	font-size: 35px;
+}
+
+#treatment_section .edition_interface{
+    background-color:rgb(255, 255, 255);
+    text-align: left;
+    padding: 1em;
 }
 
 #treatment_section .hovereffect h1 {
