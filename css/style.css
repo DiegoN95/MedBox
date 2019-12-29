@@ -1047,9 +1047,10 @@ input[type="text"] {
     color: #bdbfc1;
 }
 
-#treatment_section .save_btn {
+#treatment_section .edit_btn {
 		display: inline-block;
 		padding: 5px 13px;
+        height: 36px;
 		font-size: 16px;
 		font-weight: 700;
 		text-align: center;
@@ -1064,11 +1065,12 @@ input[type="text"] {
         border-radius: 0%;
 	}
 
-#treatment_section .save_btn:hover, .save_btn:focus, .save_btn:active, .open > .dropdown-toggle.save_btn{
+#treatment_section .edit_btn:hover, .edit_btn:focus, .edit_btn:active, .open > .dropdown-toggle.edit_btn{
 	   color: #0a0a0a !important;
 	   background-color: #ffffff !important;
+		padding: 2px 13px;
 		border: 5px solid #64611b;
-		font-size: 12px;
+		font-size: 18px;
 	}
 
 #treatment_section .btn-primary {

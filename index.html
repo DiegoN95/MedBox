@@ -161,7 +161,7 @@
 	<script src="js/main.js"></script>
     <!-- JSON script -->
     <script>
-        let requestURL = 'https://raw.githubusercontent.com/DiegoN95/MedBox/master/Data/100001.json';
+        let requestURL = 'Data/100001.json';
         let request = new XMLHttpRequest();
         request.open('GET', requestURL);
         request.responseType = 'json';
@@ -279,9 +279,10 @@
             
             var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
             var theUrl = 'https://raw.githubusercontent.com/DiegoN95/MedBox/master/Data/100001.json';
-            xmlhttp.open('POST', theUrl);
+            xmlhttp.open('POST', requestURL);
             xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xmlhttp.send(JSON.stringify({ "Traitement": gtreatment }));
+            var obj = { Traitement: gtreatment };
+            xmlhttp.send(JSON.stringify(obj));
         }
         
         function download(content, fileName, contentType) {
