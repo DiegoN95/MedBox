@@ -86,7 +86,8 @@
                                 <img id="imgMed" src="images/Add.png">
                             </div>
                             </div>
-                                <button class="btn save_btn"  href="#" onclick="toogle_edit()">Save</button>
+                                <button class="btn edit_btn"  href="#" onclick="save_treatment()">Save</button>
+                                <button class="btn edit_btn"  href="#" onclick="toogle_edit()">Cancel</button>
                         </div><!-- end edit_window -->
                         <div id="pannel" class="masonry_wrapper" data-scroll-reveal="enter from the bottom after 0.5s">
                             <!-- treatement items place -->   
@@ -224,6 +225,8 @@
             }
         }
         
+        var selected_treatment = NaN;
+        
         function toogle_edit() {
             var x = document.querySelector("#edit_window.edition_interface");
             if (x.style.display == "none") {
@@ -241,10 +244,10 @@
             }
         }
         
-        
         function load_treatment() {
             var sCaller = this.parentElement;
             var ntret = parseInt(sCaller.id);
+            selected_treatment = ntret;
             const MyForm = document.getElementById("editInfo");
             const Myname = document.getElementById("MedName");
             const Myper = document.getElementById("TakePeriod");
@@ -258,6 +261,35 @@
             Myqty.setAttribute("value", gtreatment[ntret]["Quantité par prise"]);
             MyIMed.setAttribute("src", "images/" + gtreatment[ntret]["Nom du médicament"] + ".png");
             toogle_edit();
+        }
+        
+        function save_treatment() {
+            const MyForm = document.getElementById("editInfo");
+            const Myname = document.getElementById("MedName");
+            const Myper = document.getElementById("TakePeriod");
+            const Myocu = document.getElementById("Ocurrence");
+            const Myqty = document.getElementById("Quantity");
+            const MyIMed = document.getElementById("imgMed");
+            const data_to_save = gtreatment[selected_treatment];
+            gtreatment[selected_treatment]["Nom du médicament"] = Myname.value; 
+            gtreatment[selected_treatment]["Période de prise"] = Myper.value; 
+            gtreatment[selected_treatment]["Nonbre de prise par Jour"] = Myocu.value; 
+            gtreatment[selected_treatment]["Quantité par prise"] = Myqty.value; 
+            toogle_edit();
+            
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+            var theUrl = 'https://raw.githubusercontent.com/DiegoN95/MedBox/master/Data/100001.json';
+            xmlhttp.open('POST', theUrl);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.send(JSON.stringify({ "Traitement": gtreatment }));
+        }
+        
+        function download(content, fileName, contentType) {
+            var a = document.createElement("a");
+            var file = new Blob([content], {type: contentType});
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
         }
     </script>
     
